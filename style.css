@@ -1,0 +1,107 @@
+html, body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: grid;
+  height: 100%;
+  place-items: center;
+  text-align: center;
+  background: #d8d4d4;
+  margin: 0;
+}
+
+.wrapper {
+  width: 400px;
+  background: #111;
+  padding: 50px 90px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.text {
+  font-size: 25px;
+  color: #666;
+  font-weight: 500;
+}
+
+.star-widget input {
+  display: none;
+}
+
+.star-widget label {
+  font-size: 50px;
+  color: #444;
+  padding: 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  float: right;
+}
+
+/* when i hover on the star glow and scale  */
+.star-widget label:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* diffrent color when i hover on the star */
+#rate-1:not(:checked) + label:hover { color: #D32F2F; }
+#rate-2:not(:checked) + label:hover { color: #F57C00; }
+#rate-3:not(:checked) + label:hover { color: #FBC02D; }
+#rate-4:not(:checked) + label:hover { color: #AFB42B; }
+#rate-5:not(:checked) + label:hover { color: #388E3C; }
+
+/*when i click on the star, the text and color changes */
+#rate-1:checked ~ form header:before {
+  color: #D32F2F;
+  content: "I hate it";
+}
+#rate-2:checked ~ form header:before {
+  color: #F57C00;
+  content: "I don't like it";
+}
+#rate-3:checked ~ form header:before {
+  color: #FBC02D;
+  content: "It's an average";
+}
+#rate-4:checked ~ form header:before {
+  color: #AFB42B;
+  content: "I like it";
+}
+#rate-5:checked ~ form header:before {
+  color: #388E3C;
+  content: "I love it";
+}
+
+
+/* show form when input is checked */
+.wrapper form {
+  display: none;
+}
+input:checked ~ form {
+  display: block;
+}
+
+form header {
+  width: 100%;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 5px 0 20px 0;
+  text-align: center;
+  transition: all 0.2s ease;
+  color: #f3df48;
+}
+
+/*pop when i click*/
+.star-widget label.animate {
+  animation: pop 0.3s ease;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* pop */
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5) rotate(10deg); }
+  100% { transform: scale(1); }
+}
